@@ -7,28 +7,40 @@ import React from "react";
 
 type Name = [name: string, (name: string) => void];
 
-type Email = [email: string, (email: string) => void];
+type Password = [password: string, (password: string) => void];
 const Home = () => {
   const [name, setName]: Name = useState("");
-  const [email, setEmail]: Email = useState("");
+  const [password, setPassword]: Password = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    api({
-      method: "POST",
-      url: "/api/user",
-      body: { name, email },
-    })
-      .then((res) => {
-        if (res.status >= 200 && res.status < 300) {
-          toast(`Submitted successfully!`);
-        } else {
-          throw new Error("Internal Server Error");
-        }
+
+    try {
+      const response = await api({
+        method: "POST",
+        url: "/api/user",
+        body: { name, password },
+      });
+
+      if (response.status === 200) {
+        toast("Submitted successfully!");
         setName("");
-        setEmail("");
-      })
-      .catch(() => toast(`Internal Server Error`));
+        setPassword("");
+      } else if (response.status === 400) {
+        toast("You're stupid");
+        setName("");
+        setPassword("");
+      }
+    } catch (error) {
+      // Check if the error is from the server
+      if (error.response && error.response.status === 400) {
+        // Handle username already exists case
+        toast(error.response.data.message || "Username already exists.");
+      } else {
+        // Handle general server error
+        toast("Internal Server Error");
+      }
+    }
   };
 
   return (
@@ -51,15 +63,18 @@ const Home = () => {
           />
         </div>
         <div className="mb-4 p-3">
-          <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
-            Email:
+          <label
+            htmlFor="password"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            password:
           </label>
           <input
-            type="text"
-            id="email"
+            type="password"
+            id="password"
             className="px-3 py-2 border rounded-md"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="text-center">
