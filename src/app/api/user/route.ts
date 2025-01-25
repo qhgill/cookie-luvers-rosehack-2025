@@ -3,20 +3,32 @@ import connectDB from "@/utils/connectDB";
 
 interface User {
   name: string;
-  email: string;
+  password: string;
 }
 
 export const POST = async (req) => {
   const client = await connectDB();
 
-  const { name, email }: User = await req.json();
+  const { name, password }: User = await req.json();
+
   try {
     const db = client.db();
     const accountsCollection = db.collection("accounts");
 
+    // Step 1: Check if a user with the same name already exists
+    const existingUser = await accountsCollection.findOne({ name });
+
+    if (existingUser) {
+      return NextResponse.json(
+        { message: "Username already exists. Please choose another." },
+        { status: 400 },
+      );
+    }
+
+    // Step 2: Insert the new user if the name is unique
     await accountsCollection.insertOne({
       name,
-      email,
+      password,
     });
 
     return NextResponse.json({ message: "OK" }, { status: 200 });
