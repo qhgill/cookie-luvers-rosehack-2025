@@ -30,16 +30,13 @@ const Home = () => {
         toast("You're stupid");
         setName("");
         setPassword("");
+      } else if (response.status === 350) {
+        toast("You wrote nothing loser");
+        setName("");
+        setPassword("");
       }
     } catch (error) {
-      // Check if the error is from the server
-      if (error.response && error.response.status === 400) {
-        // Handle username already exists case
-        toast(error.response.data.message || "Username already exists.");
-      } else {
-        // Handle general server error
-        toast("Internal Server Error");
-      }
+      toast("Internal Server Error");
     }
   };
 

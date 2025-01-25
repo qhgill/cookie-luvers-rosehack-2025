@@ -15,6 +15,13 @@ export const POST = async (req) => {
     const db = client.db();
     const accountsCollection = db.collection("accounts");
 
+    if (name.length == 0 || password.length == 0) {
+      return NextResponse.json(
+        { message: "You wrote nothing loser" },
+        { status: 350 },
+      );
+    }
+
     // Step 1: Check if a user with the same name already exists
     const existingUser = await accountsCollection.findOne({ name });
 
