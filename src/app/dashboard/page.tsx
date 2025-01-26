@@ -80,7 +80,7 @@ const Dashboard = () => {
 
   return (
     <div className="p-16 bg-[#CAEAFF] min-h-screen">
-      <Navigation/>
+      <Navigation />
       <h1>Welcome to your dashboard, {session.user.name}!</h1>
 
       <Image
