@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import Window from "@/public/window.png";
+import Image from "next/image";
 
 const Dashboard = () => {
   const [session, setSession] = useState(null);
@@ -76,9 +78,17 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-8 bg-[#CAEAFF] min-h-screen">
       <h1>Welcome to your dashboard, {session.user.name}!</h1>
-      <h2>Your Tasks:</h2>
+
+      <Image
+        src={Window}
+        alt="Window"
+        width={450}
+        height={550}
+        className="flex items-center mx-auto"
+      />
+      <div className="bg-[#52842A] p-8 w-1/12">tasks</div>
       {tasks.length > 0 ? (
         <ul>
           {tasks.map((task, index) => (
