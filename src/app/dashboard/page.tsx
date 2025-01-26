@@ -86,12 +86,13 @@ const Dashboard = () => {
     );
   }
 
-
   return (
     <div className="p-8 bg-[#CAEAFF] min-h-screen font-serif">
-      <Navigation/>
+      <Navigation />
       <div className="rounded-2xl bg-[#3F637B] w-[40%]">
-      <h1 className="p-2 justify-self-center items-center text-[#FFD864] my-5 flex lg:text-4xl sm:text-2xl">Welcome to your dashboard, {session.user.name}!</h1>
+        <h1 className="p-2 justify-self-center items-center text-[#FFD864] my-5 flex lg:text-4xl sm:text-2xl">
+          Welcome to your dashboard, {session.user.name}!
+        </h1>
       </div>
 
       <Image
@@ -104,7 +105,7 @@ const Dashboard = () => {
       <div className="mt-8 justify-self-center text-white lg:text-4xl md:text-4xl sm:text-md rounded-3xl bg-[#52842A] p-4 w-1/4">
         <p className="justify-self-center items-center">TASKS</p>
       </div>
-      <div className ="flex space-x-4 mt-4 justify-self-center items-center">
+      <div className="flex space-x-4 mt-4 justify-self-center items-center">
         <input
           className="justify-self-center rounded-3xl flex p-3"
           type="text"
@@ -113,38 +114,39 @@ const Dashboard = () => {
           placeholder="Enter a new task"
           style={{ marginRight: "10px" }}
         />
-        <button 
+        <button
           className="text-white bg-green-800 py-2 px-4 rounded-full"
-          onClick={addTask}>
-            Add Task
+          onClick={addTask}
+        >
+          Add Task
         </button>
       </div>
 
-    <div className="mt-6 justify-center items-center flex-col flex">
-      {tasks.length > 0 ? (
-        <ul>
-          {tasks.map((task, index) => (
-            <li key={index} className="justify-self-center flex items-center">
-              <button
-                onClick={() => {
-                  removeTask(task);
-                }} // Remove the task when clicked
-                className="mr-2 border-black"
-              >
-                □
-              </button>
-              {task}
-            </li>
-          ))}
-          {session.user.collection.map((item, index) => (
-            <li key={index} className="flex items-center">
-              {item}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="p-5 justify-self-center">No tasks available.</p>
-      )}
+      <div className="mt-6 justify-center items-center flex-col flex">
+        {tasks.length > 0 ? (
+          <ul>
+            {tasks.map((task, index) => (
+              <li key={index} className="justify-self-center flex items-center">
+                <button
+                  onClick={() => {
+                    removeTask(task);
+                  }} // Remove the task when clicked
+                  className="mr-2 border-black"
+                >
+                  □
+                </button>
+                {task}
+              </li>
+            ))}
+            {session.user.collection.map((item, index) => (
+              <li key={index} className="flex items-center">
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="p-5 justify-self-center">No tasks available.</p>
+        )}
         <br />
         <div>{session.user.completed} - Completed</div>
         <Image

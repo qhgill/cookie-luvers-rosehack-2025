@@ -22,7 +22,8 @@ const itim = Itim({
 
 export const metadata = {
   title: "Rose Deck",
-  description: "Create your own account to collect different rarities of roses based on the amount of tasks completed!",
+  description:
+    "Create your own account to collect different rarities of roses based on the amount of tasks completed!",
 };
 
 export default function RootLayout({ children }) {
