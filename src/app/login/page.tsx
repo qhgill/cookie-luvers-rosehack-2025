@@ -43,7 +43,13 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-screen  flex flex-col justify-center items-center bg-[#B4DD93]">
+    <div className="font-serif w-full h-screen flex flex-col justify-center items-center bg-[#B4DD93]">
+      <img
+        src="rosedeoctext.png"
+        alt="RoseDeck"
+        className="w-500 h-500 object-contain mb-4"
+      />
+      <p className="text-xl mb-4">LOGIN</p>
       <form
         onSubmit={handleSubmit}
         className="max-w-md mx-auto bg-[#7DC857] shadow-md rounded-md"
@@ -74,7 +80,7 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            placeholder="ex: watering123"
+            placeholder="ex: watering123$"
             className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -83,9 +89,9 @@ const Login = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-[#F5D7D1] hover:bg-[#E27A84] text-black font-bold py-2 px-4 rounded-md mb-4"
+            className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#E27A84] font-bold py-2 px-4 rounded-md mb-4"
           >
-            {loading ? "Logging in..." : "🍃login🍃"}
+            {loading ? "Logging in..." : "🍃Login🍃"}
           </button>
         </div>
       </form>

@@ -79,8 +79,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-16 bg-[#CAEAFF] min-h-screen">
-      <Navigation />
+    <div className="p-8 bg-[#CAEAFF] min-h-screen font-serif">
       <h1>Welcome to your dashboard, {session.user.name}!</h1>
 
       <Image
