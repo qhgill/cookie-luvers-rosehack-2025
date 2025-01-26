@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import React from "react";
 //import Router from "next/router";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
 type Name = [name: string, (name: string) => void];
 
 type Password = [password: string, (password: string) => void];
@@ -43,18 +45,20 @@ const Login = () => {
   };
 
   return (
-    <div className="font-serif w-full h-screen flex flex-col justify-center items-center bg-[#B4DD93]">
-      <img
-        src="rosedeoctext.png"
+    <div className="font-serif font-bold w-full h-screen flex flex-col justify-center items-center bg-[#B4DD93]">
+      <Image
+        src="/rosedeoctext.png"
+        height={500}
+        width={500}
+        className="mb-6"
         alt="RoseDeck"
-        className="w-500 h-500 object-contain mb-4"
       />
-      <p className="text-xl mb-4">LOGIN</p>
+      <p className="text-xl mb-7">LOGIN</p>
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto bg-[#7DC857] shadow-md rounded-md"
+        className="h-[40%] flex flex-col items-center w-1/4 mx-auto bg-[#7DC857] shadow-md rounded-md"
       >
-        <div className="mb-4 p-3">
+        <div className="p-7">
           <label
             htmlFor="name"
             className="block text-[gray-700] font-bold mb-2"
@@ -65,12 +69,12 @@ const Login = () => {
             type="text"
             id="name"
             placeholder="ex: rose"
-            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#a84750] text-[#a84750]"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="mb-4 p-3">
+        <div className="mb-8">
           <label
             htmlFor="password"
             className="block text-gray-700 font-bold mb-2"
@@ -81,7 +85,7 @@ const Login = () => {
             type="password"
             id="password"
             placeholder="ex: watering123$"
-            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#a84750] text-[#a84750]"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -89,7 +93,7 @@ const Login = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#E27A84] font-bold py-2 px-4 rounded-md mb-4"
+            className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#a84750] font-bold py-2 px-4 rounded-md mb-4"
           >
             {loading ? "Logging in..." : "🍃Login🍃"}
           </button>
