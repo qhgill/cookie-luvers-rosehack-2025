@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Window from "@/public/window.png";
 import Image from "next/image";
+import Navigation from "@/components/navbar";
 import Deck from "../../components/deck/deck";
 import flowers from "@/data/flowers";
 
@@ -86,7 +87,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-8 bg-[#CAEAFF] min-h-screen">
+    <div className="p-8 bg-[#CAEAFF] min-h-screen font-serif">
       <h1>Welcome to your dashboard, {session.user.name}!</h1>
 
       <Image
