@@ -3,6 +3,7 @@ import { DefaultSession, DefaultUser } from "next-auth";
 declare module "next-auth" {
   interface User {
     tasks: string[]; // Add the tasks property to the User type
+    completed: number;
   }
 
   interface Session {

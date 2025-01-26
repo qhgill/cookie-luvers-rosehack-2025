@@ -38,15 +38,32 @@ const Dashboard = () => {
 
       if (!res.ok) {
         console.error("Failed to add task");
-        // Optionally, we can handle the error here without reverting the task list
       }
 
       // Clear the input field after a successful request
       setNewTask("");
     } catch (error) {
       console.error("Error adding task:", error);
-      // If desired, you can handle the error here, but no need to revert tasks
     }
+  };
+
+  const removeTask = async (taskToRemove) => {
+    // Immediately remove the task locally and increment the completed count
+    setTasks((prevTasks) => prevTasks.filter((task) => task !== taskToRemove));
+    setSession((prevSession) => ({
+      ...prevSession,
+      user: {
+        ...prevSession.user,
+        completed: prevSession.user.completed + 1, // Increment the completed count
+      },
+    }));
+
+    // Perform the backend request
+    await fetch("/api/tasks", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ task: taskToRemove }),
+    });
   };
 
   if (!session) {
@@ -59,13 +76,21 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
+    <div className="p-8">
       <h1>Welcome to your dashboard, {session.user.name}!</h1>
       <h2>Your Tasks:</h2>
       {tasks.length > 0 ? (
         <ul>
           {tasks.map((task, index) => (
-            <li key={index}>{task}</li>
+            <li key={index} className="flex items-center">
+              <button
+                onClick={() => removeTask(task)} // Remove the task when clicked
+                className="mr-2 border-black"
+              >
+                □
+              </button>
+              {task}
+            </li>
           ))}
         </ul>
       ) : (
@@ -80,6 +105,11 @@ const Dashboard = () => {
           style={{ marginRight: "10px" }}
         />
         <button onClick={addTask}>Add Task</button>
+
+        <br />
+        <div>{session.user.completed} - Completed</div>
+        <br />
+        <div>{session.user.completed % 4} - Completed Mod 4</div>
       </div>
       <div className="m-10"></div>
     </div>
