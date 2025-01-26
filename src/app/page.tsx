@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
@@ -86,6 +86,17 @@ const Home = () => {
           </button>
         </div>
       </form>
+      <div className="text-center mt-10">
+        <p className="text-lg text-bold text-black m-5">
+          have an account already?
+        </p>
+        <Link
+          className="bg-slate-500 text-black font-bold py-2 px-4 rounded-md mb-4"
+          href="/login"
+        >
+          go to login
+        </Link>
+      </div>
     </div>
   );
 };

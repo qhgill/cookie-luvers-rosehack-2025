@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 
 const Dashboard = () => {
@@ -82,6 +81,7 @@ const Dashboard = () => {
         />
         <button onClick={addTask}>Add Task</button>
       </div>
+      <div className="m-10"></div>
     </div>
   );
 };
