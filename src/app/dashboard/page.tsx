@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Window from "@/public/window.png";
 import Image from "next/image";
+import Navigation from "@/components/navbar";
 
 const Dashboard = () => {
   const [session, setSession] = useState(null);
