@@ -5,6 +5,7 @@ import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import React from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type Name = [name: string, (name: string) => void];
 
@@ -44,18 +45,20 @@ const Home = () => {
   };
 
   return (
-    <div className="font-serif w-full h-screen  flex flex-col justify-center items-center bg-[#B4DD93]">
-      <img
-        src="rosedeoctext.png"
+    <div className="font-serif font-bold w-full h-screen  flex flex-col justify-center items-center bg-[#B4DD93]">
+      <Image
+        src="/rosedeoctext.png"
+        height={500}
+        width={500}
+        className="mb-6"
         alt="RoseDeck"
-        className="w-500 h-500 object-contain mb-4"
       />
-      <p className="text-xl mb-4">CREATE ACCOUNT</p>
+      <p className="text-xl mb-8">CREATE ACCOUNT</p>
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto bg-[#7DC857] shadow-md rounded-md"
+        className="h-[40%] flex flex-col items-center w-1/4 mx-auto bg-[#7DC857] shadow-md rounded-md"
       >
-        <div className="mb-4 p-3">
+        <div className="py-7">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
             username:
           </label>
@@ -63,12 +66,12 @@ const Home = () => {
             type="text"
             id="name"
             placeholder="ex: flower"
-            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#a84750] text-[#a84750]"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="mb-4 p-3">
+        <div className="mb-8">
           <label
             htmlFor="password"
             className="block text-gray-700 font-bold mb-2"
@@ -79,7 +82,7 @@ const Home = () => {
             type="password"
             id="password"
             placeholder="ex: wilting@69z"
-            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#a84750] text-[#a84750]"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -87,18 +90,18 @@ const Home = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#E27A84] font-bold py-2 px-4 rounded-md mb-4"
+            className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#a84750] font-bold py-2 px-4 rounded-md"
           >
             Submit
           </button>
         </div>
       </form>
-      <div className="text-center mt-10">
+      <div className="text-center mt-5">
         <p className="text-lg text-bold text-black m-5">
           Have an Account Already?🤔
         </p>
         <Link
-          className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#E27A84] font-bold py-2 px-4 rounded-md mb-4"
+          className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#a84750] font-bold py-2 px-4 rounded-md mb-4"
           href="/login"
         >
           🍃Go To Login🍃
