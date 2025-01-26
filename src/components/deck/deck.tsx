@@ -23,7 +23,7 @@ const Deck = () => {
 
   return (
     <div className="mt-20 bg-[#FFF7EB] w-full flex flex-col items-center">
-      <div className="w-1/10 text-[40px] text-white bg-[#63A443] mt-10 mb-4 py-3 px-7 rounded-3xl">
+      <div className="tracking-wider font-modak w-1/10 lg:text-[50px] sm:text-[35px] text-white bg-[#63A443] mt-10 mb-4 py-3 px-7 rounded-3xl">
         My Roses
       </div>
       <div className="w-2/3 grid grid-cols-3 gap-10 justify-center m-5">

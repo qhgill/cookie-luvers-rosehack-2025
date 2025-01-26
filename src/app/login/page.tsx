@@ -45,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <div className="font-serif font-bold w-full h-screen flex flex-col justify-center items-center bg-[#bee49e]">
+    <div className="font-itim font-bold w-full h-screen flex flex-col justify-center items-center bg-[#bee49e]">
       <Image
         src="/rosedeoctext.png"
         height={500}

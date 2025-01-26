@@ -45,7 +45,7 @@ const Home = () => {
   };
 
   return (
-    <div className="font-serif font-bold w-full h-screen  flex flex-col justify-center items-center bg-[#bee49e]">
+    <div className="font-itim font-bold w-full h-screen  flex flex-col justify-center items-center bg-[#bee49e]">
       <Image
         src="/rosedeoctext.png"
         height={500}
@@ -59,7 +59,7 @@ const Home = () => {
         className="h-[40%] flex flex-col items-center w-1/4 mx-auto bg-[#7DC857] shadow-md rounded-md"
       >
         <div className="py-7">
-          <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
+          <label htmlFor="name" className="block text-black font-bold mb-2">
             username:
           </label>
           <input
@@ -72,10 +72,7 @@ const Home = () => {
           />
         </div>
         <div className="mb-8">
-          <label
-            htmlFor="password"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="password" className="block text-black font-bold mb-2">
             password:
           </label>
           <input
