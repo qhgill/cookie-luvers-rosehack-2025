@@ -158,7 +158,9 @@ const Dashboard = () => {
         <Image
           className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           src={
-            flowers[session.user.currPlant].images[session.user.completed % 4]
+            flowers[session.user.currPlant % 3].images[
+              session.user.completed % 4
+            ]
           }
           alt="yippee!"
         />
