@@ -20,6 +20,7 @@ const Deck = () => {
 
     fetchSession();
   }, []);
+
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-1/10 text-[40px] text-white bg-[#63A443] mt-10 mb-4 py-3 px-7 rounded-3xl">
@@ -27,7 +28,13 @@ const Deck = () => {
       </div>
       <div className="w-2/3 grid grid-cols-3 gap-10 justify-center m-5">
         {flowers.map((flower, index) => (
-          <DeckCard key={index} image={flower.stage4img} />
+          <div>
+            {collection[index] === true ? (
+              <DeckCard key={index} image={flower.stage4img} />
+            ) : (
+              <DeckCard key={index} image={flower.stage1img} />
+            )}
+          </div>
         ))}
       </div>
     </div>
