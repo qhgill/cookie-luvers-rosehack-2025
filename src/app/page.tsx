@@ -4,11 +4,13 @@ import { useState } from "react";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 type Name = [name: string, (name: string) => void];
 
 type Password = [password: string, (password: string) => void];
 const Home = () => {
+  const router = useRouter();
   const [name, setName]: Name = useState("");
   const [password, setPassword]: Password = useState("");
 
@@ -26,6 +28,7 @@ const Home = () => {
         toast("Submitted successfully!");
         setName("");
         setPassword("");
+        router.push("/login");
       } else if (response.status === 400) {
         toast("You're stupid");
         setName("");
