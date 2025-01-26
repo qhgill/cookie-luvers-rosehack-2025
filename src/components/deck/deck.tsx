@@ -29,10 +29,11 @@ const Deck = () => {
       <div className="w-2/3 grid grid-cols-3 gap-10 justify-center m-5">
         {flowers.map((flower, index) => (
           <div>
+            <div className="text-8xl text-black z-100">{collection[index]}</div>
             {collection[index] === true ? (
-              <DeckCard key={index} image={flower.stage4img} />
+              <DeckCard key={index} image={flower.lockedimg} />
             ) : (
-              <DeckCard key={index} image={flower.stage1img} />
+              <DeckCard key={index} image={flower.unlockedimg} />
             )}
           </div>
         ))}

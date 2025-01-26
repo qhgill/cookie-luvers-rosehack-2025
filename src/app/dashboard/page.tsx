@@ -3,11 +3,15 @@ import { useState, useEffect } from "react";
 import Window from "@/public/window.png";
 import Image from "next/image";
 import Deck from "../../components/deck/deck";
+import flowers from "@/data/flowers";
 
 const Dashboard = () => {
   const [session, setSession] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
+  const [completed, setCompleted] = useState("");
+  const [currPlant, setCurrPlant] = useState("");
+  const [collection, setCollection] = useState([]);
 
   useEffect(() => {
     // Fetch the session and tasks on component mount
@@ -18,6 +22,9 @@ const Dashboard = () => {
       if (data?.user) {
         setSession(data);
         setTasks(data.user.tasks || []); // Set tasks from session data
+        setCompleted(data.user.completed);
+        setCurrPlant(data.user.currPlant);
+        setCollection(data.user.collection);
       }
     };
 
@@ -95,12 +102,19 @@ const Dashboard = () => {
           {tasks.map((task, index) => (
             <li key={index} className="flex items-center">
               <button
-                onClick={() => removeTask(task)} // Remove the task when clicked
+                onClick={() => {
+                  removeTask(task);
+                }} // Remove the task when clicked
                 className="mr-2 border-black"
               >
                 □
               </button>
               {task}
+            </li>
+          ))}
+          {collection.map((item, index) => (
+            <li key={index} className="flex items-center">
+              {item}
             </li>
           ))}
         </ul>
@@ -119,10 +133,19 @@ const Dashboard = () => {
 
         <br />
         <div>{session.user.completed} - Completed</div>
+        <Image
+          className="absolute top-[348px] right-[875px]"
+          src={
+            flowers[session.user.currPlant].images[session.user.completed % 4]
+          }
+          alt="yippee!"
+        />
         <br />
         <div>{session.user.completed % 4} - Completed Mod 4</div>
       </div>
-      <Deck />
+      <div title="deck">
+        <Deck />
+      </div>
     </div>
   );
 };
