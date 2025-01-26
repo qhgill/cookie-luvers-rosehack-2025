@@ -1,11 +1,11 @@
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { handler } from "@/app/api/auth/[...nextauth]/route";
 import { NextResponse } from "next/server";
 import connectDB from "@/utils/connectDB";
 
 export const POST = async (req) => {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession(handler);
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -51,7 +51,7 @@ export const POST = async (req) => {
 
 export const DELETE = async (req) => {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession(handler);
     if (!session) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
@@ -84,6 +84,27 @@ export const DELETE = async (req) => {
       return new Response(JSON.stringify({ error: "User not found" }), {
         status: 404,
       });
+    }
+
+    // Check if the completed value % 4 === 3
+    const isCompletedSpecial = updatedUser.value.completed % 4 === 3;
+    console.log(isCompletedSpecial);
+    console.log(updatedUser.value.completed);
+
+    if (isCompletedSpecial) {
+      // Logic to update the currPlant index (cycling through 0, 1, 2)
+      currPlant = (currPlant + 1) % 3; // Increment and wrap around if greater than 2
+
+      // Update the value at the currPlant index in the completed array
+      await accountsCollection.findOneAndUpdate(
+        { name: session.user.name },
+        {
+          $set: {
+            [`completed.${currPlant}`]: true, // Set the value at the specific index
+          },
+          $setOnInsert: { currPlant }, // Optionally set currPlant if needed
+        },
+      );
     }
 
     return new Response(

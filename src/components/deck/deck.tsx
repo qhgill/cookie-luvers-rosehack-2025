@@ -30,7 +30,7 @@ const Deck = () => {
         {flowers.map((flower, index) => (
           <div>
             <div className="text-8xl text-black z-100">{collection[index]}</div>
-            {collection[index] === true ? (
+            {collection[index] === false ? (
               <DeckCard key={index} image={flower.lockedimg} />
             ) : (
               <DeckCard key={index} image={flower.unlockedimg} />

@@ -112,7 +112,7 @@ const Dashboard = () => {
               {task}
             </li>
           ))}
-          {collection.map((item, index) => (
+          {session.user.collection.map((item, index) => (
             <li key={index} className="flex items-center">
               {item}
             </li>
@@ -142,6 +142,8 @@ const Dashboard = () => {
         />
         <br />
         <div>{session.user.completed % 4} - Completed Mod 4</div>
+        <br />
+        <div>{session.user.currPlant} - Curr Plant Mod 4</div>
       </div>
       <div title="deck">
         <Deck />

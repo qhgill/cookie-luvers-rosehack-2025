@@ -71,7 +71,7 @@ export const handler = NextAuth({
         session.user.tasks = token.tasks || [];
         session.user.completed = token.completed || 0;
         session.user.currPlant = token.currPlant || 0;
-        session.user.collection - token.collection || [];
+        session.user.collection = token.collection || [];
       }
       return session;
     },
