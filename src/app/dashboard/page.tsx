@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const Dashboard = () => {
@@ -82,9 +81,7 @@ const Dashboard = () => {
         />
         <button onClick={addTask}>Add Task</button>
       </div>
-      <Link className="text-lg text-bold bg-blue-400 p-3" href="/deck">
-        go to deck
-      </Link>
+      <div className="m-10"></div>
     </div>
   );
 };
