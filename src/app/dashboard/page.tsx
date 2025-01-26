@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Deck from "../../components/deck/deck";
 
 const Dashboard = () => {
   const [session, setSession] = useState(null);
@@ -59,7 +60,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col w-page items-center">
       <h1>Welcome to your dashboard, {session.user.name}!</h1>
       <h2>Your Tasks:</h2>
       {tasks.length > 0 ? (
@@ -81,7 +82,7 @@ const Dashboard = () => {
         />
         <button onClick={addTask}>Add Task</button>
       </div>
-      <div className="m-10"></div>
+      <Deck />
     </div>
   );
 };
