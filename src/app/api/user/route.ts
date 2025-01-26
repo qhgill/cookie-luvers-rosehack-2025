@@ -31,11 +31,18 @@ export const POST = async (req) => {
         { status: 400 },
       );
     }
-
+    const currPlant = 0;
+    const completedTasks = 0;
+    const tasks = [];
+    const collection = [false, false, false];
     // Step 2: Insert the new user if the name is unique
     await accountsCollection.insertOne({
       name,
       password,
+      completedTasks,
+      tasks,
+      currPlant,
+      collection,
     });
 
     return NextResponse.json({ message: "OK" }, { status: 200 });
