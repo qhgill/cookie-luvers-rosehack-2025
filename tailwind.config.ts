@@ -7,7 +7,12 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        modak: ["var(--modak-font)"],
+        itim: ["var(--itim-font)"],
+      },
+    },
   },
   plugins: [],
 };
