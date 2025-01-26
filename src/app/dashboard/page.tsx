@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Window from "@/public/window.png";
 import Image from "next/image";
+import Navigation from "@/components/navbar";
 
 const Dashboard = () => {
   const [session, setSession] = useState(null);
@@ -78,7 +79,8 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-8 bg-[#CAEAFF] min-h-screen">
+    <div className="p-16 bg-[#CAEAFF] min-h-screen">
+      <Navigation/>
       <h1>Welcome to your dashboard, {session.user.name}!</h1>
 
       <Image
