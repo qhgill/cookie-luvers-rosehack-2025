@@ -3,19 +3,21 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import client from "@/utils/db";
 import CredentialsProvider from "next-auth/providers/credentials";
 import connectDB from "@/utils/connectDB";
-import { NextResponse } from "next/server";
 
-export const authOptions = NextAuth({
+export const handler = NextAuth({
   adapter: MongoDBAdapter(client),
   providers: [
     CredentialsProvider({
-      name: "Credentials",
-      id: "credentials",
+      name: "credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
+        name: { label: "Name", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        if (!credentials?.name || !credentials?.password) {
+          throw new Error("Missing username or password");
+        }
+
         // Connect to DB
         const client = await connectDB();
         const db = client.db();
@@ -23,25 +25,23 @@ export const authOptions = NextAuth({
 
         // Find the user by username
         const existingUser = await accountsCollection.findOne({
-          username: credentials?.username,
+          name: credentials.name,
         });
+        console.log(existingUser);
 
         if (!existingUser) {
-          throw new Error("No existing user");
+          throw new Error("Invalid credentials"); // Generic error for security
         }
 
-        // Compare the passwords (plain text)
-        const passwordMatch = existingUser.password === credentials?.password;
-        if (!passwordMatch) {
-          throw new Error("Wrong password");
+        // Compare the passwords directly (plain-text comparison)
+        if (existingUser.password !== credentials.password) {
+          throw new Error("Invalid credentials"); // Generic error for security
         }
 
         // Return user object if login is successful
         return {
-          id: existingUser.id,
-          username: existingUser.username,
-          password: existingUser.password,
-          // Add other fields as necessary
+          id: existingUser._id.toString(),
+          name: existingUser.name,
         };
       },
     }),
@@ -49,17 +49,25 @@ export const authOptions = NextAuth({
   session: {
     strategy: "jwt",
   },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.name = token.name;
+      }
+      return session;
+    },
+  },
+  pages: {
+    signIn: "/auth/signin", // Customize sign-in page if needed
+    error: "/auth/error", // Error redirect page
+  },
 });
 
-// Export the GET and POST handlers for the API
-export const GET = async (req) => {
-  // Handle GET requests (for example, to check if the session exists)
-  const res = NextResponse;
-  return res.json({ message: "wtf man 2" }, { status: 200 });
-};
-
-export const POST = async (req) => {
-  // Handle POST requests (used for logging in or signing up)
-  const res = NextResponse;
-  return res.json({ message: "wtf man" }, { status: 200 });
-};
+export { handler as GET, handler as POST };

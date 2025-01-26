@@ -1,10 +1,12 @@
-import { getSession } from "next-auth/react"; // Import getSession
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const Dashboard = async () => {
-  const session = await getSession(); // Get the session for the current request
+  // Get the session on the server
+  const session = await getServerSession(authOptions);
 
   if (!session) {
-    // Redirect the user to the login page if not authenticated
+    // If no session, show a message or redirect the user
     return (
       <div>
         <h1>You need to be logged in to view the dashboard</h1>

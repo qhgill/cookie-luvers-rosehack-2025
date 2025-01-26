@@ -12,7 +12,7 @@ type Name = [name: string, (name: string) => void];
 type Password = [password: string, (password: string) => void];
 const Login = () => {
   const router = useRouter();
-  const [username, setUsername] = useState(""); // State to store username
+  const [name, setName] = useState(""); // State to store username
   const [password, setPassword] = useState(""); // State to store password
   const [loading, setLoading] = useState(false); // Loading state for the form
 
@@ -23,7 +23,7 @@ const Login = () => {
 
     const response = await signIn("credentials", {
       redirect: false, // Prevent automatic redirect
-      username,
+      name,
       password,
     });
 
@@ -33,7 +33,7 @@ const Login = () => {
       // Handle error case (e.g., wrong username or password)
       toast("Login failed: " + response.error);
     } else if (response.status === 200) {
-      router.push("/user/dashboard");
+      router.push("/dashboard");
     } else {
       // Success case (e.g., successful login)
       toast("Logged in successfully!");
@@ -58,8 +58,8 @@ const Login = () => {
             type="text"
             id="name"
             className="px-3 py-2 border rounded-md"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="mb-4 p-3">
