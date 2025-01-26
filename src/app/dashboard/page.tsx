@@ -5,6 +5,7 @@ import Image from "next/image";
 import Navigation from "@/components/navbar";
 import Deck from "../../components/deck/deck";
 import flowers from "@/data/flowers";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
 
 const Dashboard = () => {
   const [session, setSession] = useState(null);
@@ -79,7 +80,7 @@ const Dashboard = () => {
 
   if (!session) {
     return (
-      <div>
+      <div className="font-itim">
         <h1>You need to be logged in to view the dashboard</h1>
         <a href="/login">Go to Login</a>
       </div>
@@ -87,10 +88,10 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-8 bg-[#CAEAFF] min-h-screen font-serif">
+    <div className="p-8 bg-[#CAEAFF] min-h-screen font-itim">
       <Navigation />
       <div className="rounded-2xl bg-[#3F637B] w-[40%]">
-        <h1 className="p-2 justify-self-center items-center text-[#FFD864] my-5 flex lg:text-4xl sm:text-2xl">
+        <h1 className="tracking-wide font-itim font-bold p-2 justify-self-center items-center text-[#FFD864] my-5 flex lg:text-4xl sm:text-2xl">
           Welcome to your dashboard, {session.user.name}!
         </h1>
       </div>
@@ -103,9 +104,11 @@ const Dashboard = () => {
         className="flex items-center mx-auto"
       />
       <div className="mt-8 justify-self-center text-white lg:text-4xl md:text-4xl sm:text-md rounded-3xl bg-[#52842A] p-4 w-1/4">
-        <p className="justify-self-center items-center">TASKS</p>
+        <p className="pt-1 tracking-widest font-modak lg:text-5xl sm:text-2xl justify-self-center items-center">
+          TASKS
+        </p>
       </div>
-      <div className="flex space-x-4 mt-4 justify-self-center items-center">
+      <div className="font-itim font-bold flex space-x-4 mt-4 justify-self-center items-center">
         <input
           className="justify-self-center rounded-3xl flex p-3"
           type="text"
@@ -115,25 +118,28 @@ const Dashboard = () => {
           style={{ marginRight: "10px" }}
         />
         <button
-          className="text-white bg-green-800 py-2 px-4 rounded-full"
+          className="tracking-wide text-white bg-green-800 py-2 px-4 rounded-full"
           onClick={addTask}
         >
           Add Task
         </button>
       </div>
 
-      <div className="mt-6 justify-center items-center flex-col flex">
+      <div className="font-itim mt-6 justify-center items-center flex-col flex">
         {tasks.length > 0 ? (
-          <ul>
+          <ul className="items-center w-full max-w-md mx-auto space-y-4">
             {tasks.map((task, index) => (
-              <li key={index} className="justify-self-center flex items-center">
+              <li
+                key={index}
+                className="space-x-4 max-w-lg bg-[#E9FFDE] p-2 rounded-md duration-200 flex items-center"
+              >
                 <button
                   onClick={() => {
                     removeTask(task);
                   }} // Remove the task when clicked
-                  className="mr-2 border-black"
+                  className="mr-5 bg-[#52842A] text-white w-8 h-6 flex items-center justify-center rounded-full hover:bg-[#284014] transition-colors"
                 >
-                  □
+                  <MdCheckBoxOutlineBlank />
                 </button>
                 {task}
               </li>
@@ -145,7 +151,7 @@ const Dashboard = () => {
             ))}
           </ul>
         ) : (
-          <p className="p-5 justify-self-center">No tasks available.</p>
+          <p className="p-2 justify-self-center">No tasks available.</p>
         )}
         <br />
         <div>{session.user.completed} - Completed</div>

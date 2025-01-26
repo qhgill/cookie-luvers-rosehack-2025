@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Itim";
+  src: url("../fonts/Itim-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Modak";
+  src: url("../fonts/Modak-Regular.ttf");
+}
