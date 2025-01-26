@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import React from "react";
 //import Router from "next/router";
 import { useRouter } from "next/navigation";
-
 type Name = [name: string, (name: string) => void];
 
 type Password = [password: string, (password: string) => void];
@@ -44,20 +43,23 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-screen  flex flex-col justify-center items-center">
-      <p className="text-xl mb-4">login!</p>
+    <div className="w-full h-screen  flex flex-col justify-center items-center bg-[#B4DD93]">
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto bg-white shadow-md rounded-md"
+        className="max-w-md mx-auto bg-[#7DC857] shadow-md rounded-md"
       >
         <div className="mb-4 p-3">
-          <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
-            Name:
+          <label
+            htmlFor="name"
+            className="block text-[gray-700] font-bold mb-2"
+          >
+            username:
           </label>
           <input
             type="text"
             id="name"
-            className="px-3 py-2 border rounded-md"
+            placeholder="ex: rose"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -72,7 +74,8 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            className="px-3 py-2 border rounded-md"
+            placeholder="ex: watering123"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -80,9 +83,9 @@ const Login = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mb-4"
+            className="bg-[#F5D7D1] hover:bg-[#E27A84] text-black font-bold py-2 px-4 rounded-md mb-4"
           >
-            {loading ? "Logging in..." : "Log In"}
+            {loading ? "Logging in..." : "🍃login🍃"}
           </button>
         </div>
       </form>
