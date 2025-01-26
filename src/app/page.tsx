@@ -45,7 +45,7 @@ const Home = () => {
   };
 
   return (
-    <div className="font-serif font-bold w-full h-screen  flex flex-col justify-center items-center bg-[#B4DD93]">
+    <div className="font-serif font-bold w-full h-screen  flex flex-col justify-center items-center bg-[#bee49e]">
       <Image
         src="/rosedeoctext.png"
         height={500}

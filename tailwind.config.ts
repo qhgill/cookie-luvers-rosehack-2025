@@ -8,9 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        modak: ["Modak", "var(--modak-font)"],
-        itim: ["Itim", "var(--itim-font)"],
+    fontFamily: {
+      modak: ["var(--modak-font)"],
+      itim: ["var(--itim-font)"],
       },
     },
   },

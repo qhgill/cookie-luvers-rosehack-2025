@@ -86,9 +86,13 @@ const Dashboard = () => {
     );
   }
 
+
   return (
     <div className="p-8 bg-[#CAEAFF] min-h-screen font-serif">
-      <h1>Welcome to your dashboard, {session.user.name}!</h1>
+      <Navigation/>
+      <div className="rounded-2xl bg-[#3F637B] w-[40%]">
+      <h1 className="p-2 justify-self-center items-center text-[#FFD864] my-5 flex lg:text-4xl sm:text-2xl">Welcome to your dashboard, {session.user.name}!</h1>
+      </div>
 
       <Image
         src={Window}
@@ -97,11 +101,30 @@ const Dashboard = () => {
         height={550}
         className="flex items-center mx-auto"
       />
-      <div className="bg-[#52842A] p-8 w-1/12">tasks</div>
+      <div className="mt-8 justify-self-center text-white lg:text-4xl md:text-4xl sm:text-md rounded-3xl bg-[#52842A] p-4 w-1/4">
+        <p className="justify-self-center items-center">TASKS</p>
+      </div>
+      <div className ="flex space-x-4 mt-4 justify-self-center items-center">
+        <input
+          className="justify-self-center rounded-3xl flex p-3"
+          type="text"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+          placeholder="Enter a new task"
+          style={{ marginRight: "10px" }}
+        />
+        <button 
+          className="text-white bg-green-800 py-2 px-4 rounded-full"
+          onClick={addTask}>
+            Add Task
+        </button>
+      </div>
+
+    <div className="mt-6 justify-center items-center flex-col flex">
       {tasks.length > 0 ? (
         <ul>
           {tasks.map((task, index) => (
-            <li key={index} className="flex items-center">
+            <li key={index} className="justify-self-center flex items-center">
               <button
                 onClick={() => {
                   removeTask(task);
@@ -120,22 +143,12 @@ const Dashboard = () => {
           ))}
         </ul>
       ) : (
-        <p>No tasks available.</p>
+        <p className="p-5 justify-self-center">No tasks available.</p>
       )}
-      <div style={{ marginTop: "20px" }}>
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Enter a new task"
-          style={{ marginRight: "10px" }}
-        />
-        <button onClick={addTask}>Add Task</button>
-
         <br />
         <div>{session.user.completed} - Completed</div>
         <Image
-          className="absolute top-[348px] right-[875px]"
+          className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           src={
             flowers[session.user.currPlant].images[session.user.completed % 4]
           }
@@ -146,7 +159,7 @@ const Dashboard = () => {
         <br />
         <div>{session.user.currPlant} - Curr Plant Mod 4</div>
       </div>
-      <div title="deck">
+      <div id="my-roses">
         <Deck />
       </div>
     </div>

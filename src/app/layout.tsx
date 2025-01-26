@@ -21,8 +21,8 @@ const itim = Itim({
 });
 
 export const metadata = {
-  title: "MongoDB Next.js Hackpack",
-  description: "MongoDB Setup Integration with Next.js",
+  title: "Rose Deck",
+  description: "Create your own account to collect different rarities of roses based on the amount of tasks completed!",
 };
 
 export default function RootLayout({ children }) {

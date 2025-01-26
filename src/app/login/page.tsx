@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-//import { api } from "@/utils/api";
+// import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import React from "react";
-//import Router from "next/router";
+// import Router from "next/router";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -45,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <div className="font-serif font-bold w-full h-screen flex flex-col justify-center items-center bg-[#B4DD93]">
+    <div className="font-serif font-bold w-full h-screen flex flex-col justify-center items-center bg-[#bee49e]">
       <Image
         src="/rosedeoctext.png"
         height={500}
@@ -77,7 +77,7 @@ const Login = () => {
         <div className="mb-8">
           <label
             htmlFor="password"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-black font-bold mb-2"
           >
             password:
           </label>
