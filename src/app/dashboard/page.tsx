@@ -154,7 +154,9 @@ const Dashboard = () => {
           <p className="p-2 justify-self-center">No tasks available.</p>
         )}
         <br />
-        <div>{session.user.completed} - Completed</div>
+        <div className="font-itim text-3xl">
+          {session.user.completed} - Completed
+        </div>
         <Image
           className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           src={
@@ -162,10 +164,6 @@ const Dashboard = () => {
           }
           alt="yippee!"
         />
-        <br />
-        <div>{session.user.completed % 4} - Completed Mod 4</div>
-        <br />
-        <div>{session.user.currPlant} - Curr Plant Mod 4</div>
       </div>
       <div id="deck">
         <Deck />

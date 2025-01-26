@@ -15,7 +15,16 @@ const Navigation = () => {
           />
         </Link>
         <Link href="/dashboard#deck">
-          <Image src="/roseButton.png" height={120} width={120} alt="rose" />
+          <Image
+            className="mb-5"
+            src="/roseButton.png"
+            height={120}
+            width={120}
+            alt="rose"
+          />
+        </Link>
+        <Link href="/">
+          <Image src="/exitButton.png" height={120} width={120} alt="exit" />
         </Link>
       </div>
     </nav>
