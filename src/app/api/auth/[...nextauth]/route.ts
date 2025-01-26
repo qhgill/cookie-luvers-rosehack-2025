@@ -44,6 +44,8 @@ export const handler = NextAuth({
           name: existingUser.name,
           tasks: existingUser.tasks || [],
           completed: existingUser.completed || 0,
+          currPlant: existingUser.currPlant || 0,
+          collection: existingUser.collection || [],
         };
       },
     }),
@@ -58,6 +60,8 @@ export const handler = NextAuth({
         token.name = user.name;
         token.tasks = user.tasks || [];
         token.completed = user.completed || 0;
+        token.currPlant = user.currPlant || 0;
+        token.collection = user.collection || [];
       }
       return token;
     },
@@ -66,6 +70,8 @@ export const handler = NextAuth({
         session.user.name = token.name;
         session.user.tasks = token.tasks || [];
         session.user.completed = token.completed || 0;
+        session.user.currPlant = token.currPlant || 0;
+        session.user.collection = token.collection || [];
       }
       return session;
     },
