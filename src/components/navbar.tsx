@@ -14,7 +14,7 @@ const Navigation = () => {
             alt="leaf"
           />
         </Link>
-        <Link href="/dashboard#my-roses">
+        <Link href="/dashboard#deck">
           <Image src="/roseButton.png" height={120} width={120} alt="rose" />
         </Link>
       </div>

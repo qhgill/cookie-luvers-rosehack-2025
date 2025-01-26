@@ -5,7 +5,7 @@ import Image from "next/image";
 import Navigation from "@/components/navbar";
 import Deck from "../../components/deck/deck";
 import flowers from "@/data/flowers";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
+import { RiCheckboxBlankFill } from "react-icons/ri";
 
 const Dashboard = () => {
   const [session, setSession] = useState(null);
@@ -118,7 +118,7 @@ const Dashboard = () => {
           style={{ marginRight: "10px" }}
         />
         <button
-          className="tracking-wide text-white bg-green-800 py-2 px-4 rounded-full"
+          className="hover:bg-[#85cc98] hover:text-[#224a34] tracking-wide text-white bg-green-800 py-2 px-4 rounded-full"
           onClick={addTask}
         >
           Add Task
@@ -137,9 +137,9 @@ const Dashboard = () => {
                   onClick={() => {
                     removeTask(task);
                   }} // Remove the task when clicked
-                  className="mr-5 bg-[#52842A] text-white w-8 h-6 flex items-center justify-center rounded-full hover:bg-[#284014] transition-colors"
+                  className="mr-5 bg-[#52842A] text-white w-5 h-5 flex items-center justify-center rounded-sm hover:bg-[#284014] transition-colors"
                 >
-                  <MdCheckBoxOutlineBlank />
+                  <RiCheckboxBlankFill />
                 </button>
                 {task}
               </li>
@@ -167,7 +167,7 @@ const Dashboard = () => {
         <br />
         <div>{session.user.currPlant} - Curr Plant Mod 4</div>
       </div>
-      <div id="my-roses">
+      <div id="deck">
         <Deck />
       </div>
     </div>
