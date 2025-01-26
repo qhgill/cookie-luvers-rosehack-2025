@@ -44,20 +44,26 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full h-screen  flex flex-col justify-center items-center">
-      <p className="text-xl mb-4">Add Data to MongoDB</p>
+    <div className="font-serif w-full h-screen  flex flex-col justify-center items-center bg-[#B4DD93]">
+      <img
+        src="rosedeoctext.png"
+        alt="RoseDeck"
+        className="w-500 h-500 object-contain mb-4"
+      />
+      <p className="text-xl mb-4">CREATE ACCOUNT</p>
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto bg-white shadow-md rounded-md"
+        className="max-w-md mx-auto bg-[#7DC857] shadow-md rounded-md"
       >
         <div className="mb-4 p-3">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
-            Name:
+            username:
           </label>
           <input
             type="text"
             id="name"
-            className="px-3 py-2 border rounded-md"
+            placeholder="ex: flower"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -72,7 +78,8 @@ const Home = () => {
           <input
             type="password"
             id="password"
-            className="px-3 py-2 border rounded-md"
+            placeholder="ex: wilting@69z"
+            className="px-3 py-2 border rounded-md caret-[#E27A84] bg-[#F5D7D1] placeholder-[#E27A84] text-[#E27A84]"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -80,7 +87,7 @@ const Home = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mb-4"
+            className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#E27A84] font-bold py-2 px-4 rounded-md mb-4"
           >
             Submit
           </button>
@@ -88,13 +95,13 @@ const Home = () => {
       </form>
       <div className="text-center mt-10">
         <p className="text-lg text-bold text-black m-5">
-          have an account already?
+          Have an Account Already?🤔
         </p>
         <Link
-          className="bg-slate-500 text-black font-bold py-2 px-4 rounded-md mb-4"
+          className="bg-[#F5D7D1] hover:bg-[#E27A84] hover:text-[#F5D7D1] text-[#E27A84] font-bold py-2 px-4 rounded-md mb-4"
           href="/login"
         >
-          go to login
+          🍃Go To Login🍃
         </Link>
       </div>
     </div>

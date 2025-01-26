@@ -1,8 +1,6 @@
 /* eslint-disable new-cap */
 import "./globals.css";
-import { Inter } from "next/font/google";
-import { Modak } from "next/font/google";
-import { Itim } from "next/font/google";
+import { Inter, Modak, Itim } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import React from "react";
 
@@ -30,7 +28,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}${modak.className}${itim.className}`}>
+      <body className={`${inter.className}${modak.variable}${itim.variable}`}>
         <Toaster />
         {children}
       </body>
