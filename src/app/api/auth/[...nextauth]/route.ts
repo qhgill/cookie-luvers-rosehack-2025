@@ -42,6 +42,8 @@ export const handler = NextAuth({
         return {
           id: existingUser._id.toString(),
           name: existingUser.name,
+          tasks: existingUser.tasks || [],
+          completed: existingUser.completed || 0,
         };
       },
     }),
@@ -54,12 +56,16 @@ export const handler = NextAuth({
       if (user) {
         token.id = user.id;
         token.name = user.name;
+        token.tasks = user.tasks || [];
+        token.completed = user.completed || 0;
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
         session.user.name = token.name;
+        session.user.tasks = token.tasks || [];
+        session.user.completed = token.completed || 0;
       }
       return session;
     },
